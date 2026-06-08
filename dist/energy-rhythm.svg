@@ -85,10 +85,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2025-06-08 — 0 commits | No commits</title>
-    </rect>
     <rect x="59" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-06-09 — 0 commits | No commits</title>
@@ -1223,7 +1219,7 @@
     </rect>
     <rect x="579" y="70" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-40-4)">
-      <title>2026-03-19 — 44 commits | Flow State</title>
+      <title>2026-03-19 — 43 commits | Flow State</title>
     </rect>
     <rect x="579" y="83" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.88" filter="url(#glow-40-5)">
@@ -1542,8 +1538,12 @@
       <title>2026-06-06 — 1 commit | Shadow Mode</title>
     </rect>
     <rect x="735" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2026-06-07 — 0 commits | No commits</title>
+          fill="#6e40c9" fill-opacity="0.45">
+      <title>2026-06-07 — 1 commit | Shadow Mode</title>
+    </rect>
+    <rect x="735" y="31" width="11" height="11" rx="2" ry="2"
+          fill="#6e40c9" fill-opacity="0.45">
+      <title>2026-06-08 — 1 commit | Shadow Mode</title>
     </rect>
 
   <!-- Legend -->
