@@ -5,10 +5,6 @@
      aria-label="Energy Rhythm Contribution Graph for hugotakeda">
   <defs>
     
-  <filter id="glow-0-3" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur stdDeviation="2" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
   <filter id="glow-1-4" x="-50%" y="-50%" width="200%" height="200%">
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -85,10 +81,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#ff7b72" fill-opacity="1" filter="url(#glow-0-3)">
-      <title>2025-06-11 — 19 commits | Peak Velocity</title>
-    </rect>
     <rect x="59" y="70" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-06-12 — 0 commits | No commits</title>
@@ -1211,7 +1203,7 @@
     </rect>
     <rect x="579" y="70" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-40-4)">
-      <title>2026-03-19 — 41 commits | Flow State</title>
+      <title>2026-03-19 — 40 commits | Flow State</title>
     </rect>
     <rect x="579" y="83" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.88" filter="url(#glow-40-5)">
@@ -1542,8 +1534,12 @@
       <title>2026-06-09 — 1 commit | Shadow Mode</title>
     </rect>
     <rect x="735" y="57" width="11" height="11" rx="2" ry="2"
+          fill="#6e40c9" fill-opacity="0.45">
+      <title>2026-06-10 — 2 commits | Shadow Mode</title>
+    </rect>
+    <rect x="735" y="70" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
-      <title>2026-06-10 — 0 commits | No commits</title>
+      <title>2026-06-11 — 0 commits | No commits</title>
     </rect>
 
   <!-- Legend -->
