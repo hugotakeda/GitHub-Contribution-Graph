@@ -45,6 +45,10 @@
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
+  <filter id="glow-52-2" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
   </defs>
   
   <style>
@@ -65,8 +69,7 @@
   <text x="27" y="105" fill="#555e6b" font-size="9" font-family="monospace">Sat</text>
 
   <!-- Month labels -->
-  <text x="59" y="14" fill="#8b949e" font-size="10" font-family="monospace">Jun</text>
-  <text x="72" y="14" fill="#8b949e" font-size="10" font-family="monospace">Jul</text>
+  <text x="59" y="14" fill="#8b949e" font-size="10" font-family="monospace">Jul</text>
   <text x="124" y="14" fill="#8b949e" font-size="10" font-family="monospace">Aug</text>
   <text x="189" y="14" fill="#8b949e" font-size="10" font-family="monospace">Sep</text>
   <text x="241" y="14" fill="#8b949e" font-size="10" font-family="monospace">Oct</text>
@@ -81,10 +84,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2025-06-30 — 0 commits | No commits</title>
-    </rect>
     <rect x="59" y="44" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-07-01 — 0 commits | No commits</title>
@@ -1158,12 +1157,12 @@
       <title>2026-03-25 — 8 commits | Logic Prime</title>
     </rect>
     <rect x="553" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-03-26 — 1 commit | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-03-26 — 0 commits | No commits</title>
     </rect>
     <rect x="553" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-03-27 — 1 commit | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-03-27 — 0 commits | No commits</title>
     </rect>
     <rect x="553" y="96" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.45">
@@ -1535,11 +1534,15 @@
     </rect>
     <rect x="735" y="18" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-52-0)">
-      <title>2026-06-28 — 10 commits | Flow State</title>
+      <title>2026-06-28 — 12 commits | Flow State</title>
     </rect>
     <rect x="735" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2026-06-29 — 0 commits | No commits</title>
+    </rect>
+    <rect x="735" y="44" width="11" height="11" rx="2" ry="2"
+          fill="#6e40c9" fill-opacity="0.88" filter="url(#glow-52-2)">
+      <title>2026-06-30 — 6 commits | Shadow Mode</title>
     </rect>
 
   <!-- Legend -->
