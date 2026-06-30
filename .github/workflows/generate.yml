@@ -4,6 +4,8 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:        # allow manual run from GitHub UI
+  schedule:
+    - cron: "0 0,12 * * *" # Executa a cada 12 horas
 
 permissions:
   contents: write
