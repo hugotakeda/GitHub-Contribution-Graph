@@ -1359,7 +1359,7 @@
     </rect>
     <rect x="644" y="18" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.7">
-      <title>2026-07-19 — 4 commits | Peak Velocity</title>
+      <title>2026-07-19 — 3 commits | Peak Velocity</title>
     </rect>
     <rect x="644" y="31" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
@@ -1558,8 +1558,8 @@
       <title>2026-09-06 — 3 commits | Shadow Mode</title>
     </rect>
     <rect x="735" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2026-09-07 — 0 commits | No commits</title>
+          fill="#6e40c9" fill-opacity="0.7">
+      <title>2026-09-07 — 3 commits | Shadow Mode</title>
     </rect>
 
   <!-- Legend -->
