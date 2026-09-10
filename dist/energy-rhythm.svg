@@ -37,10 +37,6 @@
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="glow-46-1" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur stdDeviation="2" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
   <filter id="glow-46-3" x="-50%" y="-50%" width="200%" height="200%">
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -101,10 +97,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2025-09-10 — 0 commits | No commits</title>
-    </rect>
     <rect x="59" y="70" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-09-11 — 0 commits | No commits</title>
@@ -1359,7 +1351,7 @@
     </rect>
     <rect x="644" y="44" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.7">
-      <title>2026-07-21 — 5 commits | Peak Velocity</title>
+      <title>2026-07-21 — 4 commits | Peak Velocity</title>
     </rect>
     <rect x="644" y="57" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.45">
@@ -1382,8 +1374,8 @@
       <title>2026-07-26 — 5 commits | Logic Prime</title>
     </rect>
     <rect x="657" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#3fb950" fill-opacity="0.88" filter="url(#glow-46-1)">
-      <title>2026-07-27 — 6 commits | Flow State</title>
+          fill="#6e40c9" fill-opacity="0.7">
+      <title>2026-07-27 — 3 commits | Shadow Mode</title>
     </rect>
     <rect x="657" y="44" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
@@ -1559,7 +1551,11 @@
     </rect>
     <rect x="735" y="57" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-09 — 1 commit | Shadow Mode</title>
+      <title>2026-09-09 — 2 commits | Shadow Mode</title>
+    </rect>
+    <rect x="735" y="70" width="11" height="11" rx="2" ry="2"
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-10 — 0 commits | No commits</title>
     </rect>
 
   <!-- Legend -->
