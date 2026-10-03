@@ -104,10 +104,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2025-10-03 — 0 commits | No commits</title>
-    </rect>
     <rect x="59" y="96" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-10-04 — 0 commits | No commits</title>
@@ -1362,7 +1358,7 @@
     </rect>
     <rect x="644" y="70" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="1" filter="url(#glow-45-4)">
-      <title>2026-08-13 — 11 commits | Peak Velocity</title>
+      <title>2026-08-13 — 10 commits | Peak Velocity</title>
     </rect>
     <rect x="644" y="83" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.45">
@@ -1562,7 +1558,11 @@
     </rect>
     <rect x="735" y="83" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-02 — 1 commit | Shadow Mode</title>
+      <title>2026-10-02 — 2 commits | Shadow Mode</title>
+    </rect>
+    <rect x="735" y="96" width="11" height="11" rx="2" ry="2"
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-03 — 0 commits | No commits</title>
     </rect>
 
   <!-- Legend -->
