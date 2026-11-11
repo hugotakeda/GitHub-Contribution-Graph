@@ -9,10 +9,10 @@ Automatically generates a color-coded SVG of your commits, colored by the time o
 
 | State | Hours | Color |
 |---|---|---|
-| **Shadow Mode** | 00h – 05h | Neon Purple |
-| **Logic Prime** | 06h – 11h | Soft Gold |
-| **Peak Velocity** | 12h – 17h | Vibrant Orange |
-| **Flow State** | 18h – 23h | Cyan Blue |
+| **Late Night** | 00h – 05h | Neon Purple |
+| **Morning** | 06h – 11h | Soft Gold |
+| **Afternoon** | 12h – 17h | Vibrant Orange |
+| **Evening** | 18h – 23h | Green |
 
 </div>
 
@@ -24,7 +24,7 @@ Automatically generates a color-coded SVG of your commits, colored by the time o
 Not very colorful, but it's still an example hahahaha.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hugotakeda/Energy-Rhythm-Contribution-Graph/main/dist/energy-rhythm.svg?v" />
+  <img src="https://raw.githubusercontent.com/hugotakeda/GitHub-Contribution-Graph/main/dist/energy-rhythm.svg?v" />
 </p>
 
 </div>
@@ -43,7 +43,7 @@ Not very colorful, but it's still an example hahahaha.
 
 ```markdown
 <p align="center">
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/Energy-Rhythm-Contribution-Graph/main/dist/energy-rhythm.svg" />
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/GitHub-Contribution-Graph/main/dist/energy-rhythm.svg" />
 </p>
 ```
 *Replace `YOUR_USERNAME` with your GitHub handle.*
@@ -52,7 +52,7 @@ Not very colorful, but it's still an example hahahaha.
 
 ## Configuration (Optional)
 
-By default, the graph uses **UTC**. To use your local time:
+The included workflow defaults to **America/Sao_Paulo**. Running the script directly defaults to **UTC**. To use your local time:
 1.  Go to **Settings → Secrets and variables → Actions**.
 2.  Switch to the **Variables** tab (top right).
 3.  Click **New repository variable**.
@@ -65,7 +65,7 @@ By default, the graph uses **UTC**. To use your local time:
 The system uses **Node.js** and the **GitHub GraphQL API** to fetch your commit history from the last 365 days. 
 
 -   **Logic:** Each day is colored based on the *predominant* hour of your commits.
--   **Glow:** High-frequency days (9+ commits) get a subtle neon glow effect.
+-   **Glow:** High-frequency days (6+ commits) get a subtle neon glow effect.
 -   **Precision:** The SVG is locked at **775px** width to perfectly align with other standard GitHub metrics cards.
 
 ---
@@ -73,3 +73,12 @@ The system uses **Node.js** and the **GitHub GraphQL API** to fetch your commit 
 ## License
 
 [MIT](./LICENSE) © 2026 hugotakeda
+
+## Counting rules
+
+- Counts commits attributed to your account on accessible owned/collaborator repositories' default branches, excluding forks. This is not GitHub's native contributions calendar, which also includes other activity.
+- Paginates repository and commit history queries, deduplicates commit IDs, and uses author dates in the selected timezone.
+- Excludes this graph's historical automatic SVG refresh commits by repository, exact message, and bot committer. It does not exclude human code changes in this repository.
+- Future SVG updates use `github-actions[bot]` as both author and committer. Historical GitHub contribution credit is unchanged; the exclusion only affects this SVG.
+
+Run regression checks with `node --test tests/generateSvg.test.js`.

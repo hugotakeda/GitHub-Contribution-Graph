@@ -9,25 +9,13 @@ const USERNAME = process.env.GITHUB_USERNAME || process.argv[2];
 const TOKEN    = process.env.GH_TOKEN        || process.argv[3];
 const TIMEZONE = process.env.TIMEZONE        || 'UTC';
 
-if (!USERNAME) {
-  console.error('Error: GITHUB_USERNAME is not set.');
-  process.exit(1);
-}
-if (!TOKEN) {
-  console.error('Error: GH_TOKEN is not set. Please check your GitHub Secrets (GRAPH_TOKEN).');
-  process.exit(1);
-}
-
-console.log(`Starting SVG generation for user: ${USERNAME}`);
-console.log(`Token provided: ${TOKEN ? 'Yes' : 'No'} (length: ${TOKEN?.length || 0})`);
-
 // ── Energy State ──────────────────────────────────────────────────────────────
 const STATES = {
   none:       { label: 'No commits',         color: '#161b22', glow: 'none' },
-  madrugada:  { label: 'Shadow Mode',   color: '#6e40c9', glow: '#6e40c9' }, // 00-05
-  manha:      { label: 'Logic Prime',   color: '#f2cc60', glow: '#f2cc60' }, // 06-11
-  tarde:      { label: 'Peak Velocity', color: '#ff7b72', glow: '#ff7b72' }, // 12-17
-  noite:      { label: 'Flow State',    color: '#3fb950', glow: '#3fb950' }, // 18-23
+  madrugada:  { label: 'Late Night',   color: '#6e40c9', glow: '#6e40c9' }, // 00-05
+  manha:      { label: 'Morning',   color: '#f2cc60', glow: '#f2cc60' }, // 06-11
+  tarde:      { label: 'Afternoon', color: '#ff7b72', glow: '#ff7b72' }, // 12-17
+  noite:      { label: 'Evening',    color: '#3fb950', glow: '#3fb950' }, // 18-23
 };
 
 function getEnergyState(hour) {
@@ -46,80 +34,117 @@ function getOpacity(count) {
 }
 
 // ── Fetch GitHub commits ───────────────────────────────────────────────────────
-async function fetchCommits(username, token) {
-  const since = new Date();
-  since.setDate(since.getDate() - 365);
+// Only exclude this repository's known generated commits. Human commits made
+// through GitHub's web UI, including web-flow commits, must remain visible.
+function isGeneratedCommit(repoName, commit, username) {
+  const expectedRepo = `${username}/GitHub-Contribution-Graph`.toLowerCase();
+  const oldRepo = `${username}/Energy-Rhythm-Contribution-Graph`.toLowerCase();
+  return [expectedRepo, oldRepo].includes(repoName.toLowerCase())
+    && commit.messageHeadline === 'chore: update energy rhythm graph [skip ci]'
+    && commit.committer?.user?.login === 'github-actions[bot]';
+}
 
-  const query = `
-    query($username: String!, $since: GitTimestamp!) {
+async function fetchCommits(username, token, now = new Date(), fetchImpl = fetch) {
+  // Include the entire first local day, even when its UTC date differs.
+  const since = new Date(now.getTime() - 366 * 86400000).toISOString();
+  async function query(document, variables) {
+    const res = await fetchImpl('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ query: document, variables }),
+    });
+    if (!res.ok) throw new Error(`GitHub API error: ${res.status} ${await res.text()}`);
+    const { data, errors } = await res.json();
+    if (errors) throw new Error('GraphQL errors: ' + errors.map(e => e.message).join(', '));
+    return data;
+  }
+
+  const reposQuery = `
+    query($username: String!, $after: String) {
       user(login: $username) {
-        repositories(first: 100, isFork: false, ownerAffiliations: [OWNER, COLLABORATOR], orderBy: {field: PUSHED_AT, direction: DESC}) {
-          nodes {
-            defaultBranchRef {
-              target {
-                ... on Commit {
-                  history(since: $since, first: 100) {
-                    nodes {
-                      committedDate
-                      author { user { login } }
-                    }
-                  }
-                }
+        id
+        repositories(first: 100, after: $after, isFork: false,
+          ownerAffiliations: [OWNER, COLLABORATOR], orderBy: {field: NAME, direction: ASC}) {
+          pageInfo { hasNextPage endCursor }
+          nodes { nameWithOwner defaultBranchRef { target { oid } } }
+        }
+      }
+    }`;
+  const historyQuery = `
+    query($owner: String!, $name: String!, $head: String!, $author: ID!,
+          $since: GitTimestamp!, $after: String) {
+      repository(owner: $owner, name: $name) {
+        object(expression: $head) {
+          ... on Commit {
+            history(since: $since, first: 100, after: $after, author: {id: $author}) {
+              pageInfo { hasNextPage endCursor }
+              nodes {
+                oid authoredDate messageHeadline
+                author { user { login } }
+                committer { user { login } }
               }
             }
           }
         }
       }
-    }
-  `;
+    }`;
+  const repos = [];
+  let after = null;
+  let author;
+  do {
+    const { user } = await query(reposQuery, { username, after });
+    if (!user) throw new Error(`GitHub user not found: ${username}`);
+    author = user.id;
+    repos.push(...user.repositories.nodes);
+    const page = user.repositories.pageInfo;
+    after = page.hasNextPage ? page.endCursor : null;
+  } while (after);
 
-  const res = await fetch('https://api.github.com/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ query, variables: { username, since: since.toISOString() } }),
-  });
-
-  if (!res.ok) throw new Error(`GitHub API error: ${res.status} ${await res.text()}`);
-
-  const { data, errors } = await res.json();
-  if (errors) throw new Error('GraphQL errors: ' + errors.map(e => e.message).join(', '));
-
-  const commits = [];
-  for (const repo of data.user.repositories.nodes) {
-    const nodes = repo?.defaultBranchRef?.target?.history?.nodes || [];
-    for (const node of nodes) {
-      if (node.author?.user?.login?.toLowerCase() === username.toLowerCase()) {
-        commits.push(node.committedDate);
+  const commits = new Map();
+  for (const repo of repos) {
+    const head = repo.defaultBranchRef?.target?.oid;
+    if (!head) continue;
+    const [owner, name] = repo.nameWithOwner.split('/');
+    after = null;
+    do {
+      const data = await query(historyQuery, { owner, name, head, author, since, after });
+      const history = data.repository?.object?.history;
+      if (!history) throw new Error(`Commit history unavailable: ${repo.nameWithOwner}`);
+      for (const node of history.nodes) {
+        if (node.author?.user?.login?.toLowerCase() === username.toLowerCase()
+            && !isGeneratedCommit(repo.nameWithOwner, node, username)) {
+          commits.set(node.oid, node.authoredDate);
+        }
       }
-    }
+      after = history.pageInfo.hasNextPage ? history.pageInfo.endCursor : null;
+    } while (after);
   }
-  return commits;
+  return [...commits.values()];
 }
 
 // ── Build daily energy map ─────────────────────────────────────────────────────
-function buildDayMap(commitDates) {
+function localParts(date, timezone) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', hourCycle: 'h23', timeZone: timezone,
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(p => [p.type, p.value]));
+  return { date: `${values.year}-${values.month}-${values.day}`, hour: Number(values.hour) };
+}
+
+function buildDayMap(commitDates, now = new Date(), timezone = TIMEZONE) {
   const map = new Map();
+  const today = new Date(localParts(now, timezone).date + 'T00:00:00Z');
   for (let i = 364; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
+    const d = new Date(today);
+    d.setUTCDate(d.getUTCDate() - i);
     const key = d.toISOString().split('T')[0];
     map.set(key, { date: key, total: 0, details: { madrugada: 0, manha: 0, tarde: 0, noite: 0 } });
   }
 
   for (const iso of commitDates) {
-    const d = new Date(iso);
-    
-    // Extract local date and hour based on TIMEZONE
-    const dtfDate = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: TIMEZONE });
-    const dtfHour = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, timeZone: TIMEZONE });
-    
-    const key   = dtfDate.format(d);
-    const hour  = parseInt(dtfHour.format(d));
+    const { date: key, hour } = localParts(new Date(iso), timezone);
     const state = getEnergyState(hour);
-
     if (map.has(key)) {
       map.get(key).total++;
       map.get(key).details[state]++;
@@ -157,7 +182,7 @@ const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 // ── Build SVG ──────────────────────────────────────────────────────────────────
 function buildSvg(days) {
   const firstDate   = new Date(days[0].date);
-  const firstDow    = firstDate.getDay();
+  const firstDow    = firstDate.getUTCDay();
   const paddedDays  = [...Array(firstDow).fill(null), ...days];
 
   const weeks = [];
@@ -182,7 +207,7 @@ function buildSvg(days) {
   weeks.forEach((week, wi) => {
     const firstReal = week.find(Boolean);
     if (!firstReal) return;
-    const m = new Date(firstReal.date).getMonth();
+    const m = new Date(firstReal.date).getUTCMonth();
     if (m !== lastMonth) {
       lastMonth = m;
       monthLabels.push({ x: LEFT_PAD + wi * STEP, label: MONTHS[m] });
@@ -227,10 +252,10 @@ function buildSvg(days) {
 
   // – legend –
   const legendItems = [
-    { state: 'madrugada', label: 'Shadow Mode',   hours: '00h – 05h' },
-    { state: 'manha',     label: 'Logic Prime',   hours: '06h – 11h' },
-    { state: 'tarde',     label: 'Peak Velocity', hours: '12h – 17h' },
-    { state: 'noite',     label: 'Flow State',    hours: '18h – 23h' },
+    { state: 'madrugada', label: 'Late Night',   hours: '00h – 05h' },
+    { state: 'manha',     label: 'Morning',   hours: '06h – 11h' },
+    { state: 'tarde',     label: 'Afternoon', hours: '12h – 17h' },
+    { state: 'noite',     label: 'Evening',    hours: '18h – 23h' },
   ];
 
   const legendY          = TOP_PAD + ROWS * STEP + 12;
@@ -280,7 +305,9 @@ function buildSvg(days) {
 }
 
 // ── Main ───────────────────────────────────────────────────────────────────────
-(async () => {
+async function main() {
+  if (!USERNAME) throw new Error('GITHUB_USERNAME is not set.');
+  if (!TOKEN) throw new Error('GH_TOKEN is not set. Check the GRAPH_TOKEN secret.');
   console.log(`Fetching commits for @${USERNAME}...`);
   const commitDates = await fetchCommits(USERNAME, TOKEN);
   console.log(`  → ${commitDates.length} commits found`);
@@ -294,4 +321,9 @@ function buildSvg(days) {
   const outPath = path.join(outDir, 'energy-rhythm.svg');
   fs.writeFileSync(outPath, svg, 'utf8');
   console.log(`  → SVG written to ${outPath}`);
-})().catch(err => { console.error(err); process.exit(1); });
+}
+
+module.exports = { STATES, getEnergyState, isGeneratedCommit, fetchCommits, buildDayMap, buildSvg };
+if (require.main === module) {
+  main().catch(err => { console.error(err); process.exitCode = 1; });
+}
