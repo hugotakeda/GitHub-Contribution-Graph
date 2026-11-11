@@ -25,7 +25,15 @@
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
+  <filter id="glow-18-5" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
   <filter id="glow-19-3" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glow-33-0" x="-50%" y="-50%" width="200%" height="200%">
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
@@ -54,10 +62,6 @@
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
   <filter id="glow-46-2" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur stdDeviation="2" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="glow-46-3" x="-50%" y="-50%" width="200%" height="200%">
     <feGaussianBlur stdDeviation="2" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
@@ -571,15 +575,15 @@
     </rect>
     <rect x="267" y="96" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-16-6)">
-      <title>2026-03-07 — 10 commits | Flow State</title>
+      <title>2026-03-07 — 10 commits | Evening</title>
     </rect>
     <rect x="280" y="18" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="1" filter="url(#glow-17-0)">
-      <title>2026-03-08 — 20 commits | Shadow Mode</title>
+      <title>2026-03-08 — 20 commits | Late Night</title>
     </rect>
     <rect x="280" y="31" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="1" filter="url(#glow-17-1)">
-      <title>2026-03-09 — 16 commits | Shadow Mode</title>
+      <title>2026-03-09 — 16 commits | Late Night</title>
     </rect>
     <rect x="280" y="44" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -611,19 +615,19 @@
     </rect>
     <rect x="293" y="44" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.88" filter="url(#glow-18-2)">
-      <title>2026-03-17 — 7 commits | Logic Prime</title>
+      <title>2026-03-17 — 7 commits | Morning</title>
     </rect>
     <rect x="293" y="57" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="0.7">
-      <title>2026-03-18 — 3 commits | Flow State</title>
+      <title>2026-03-18 — 3 commits | Evening</title>
     </rect>
     <rect x="293" y="70" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-18-4)">
-      <title>2026-03-19 — 23 commits | Flow State</title>
+      <title>2026-03-19 — 60 commits | Evening</title>
     </rect>
     <rect x="293" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#3fb950" fill-opacity="0.7">
-      <title>2026-03-20 — 4 commits | Flow State</title>
+          fill="#3fb950" fill-opacity="0.88" filter="url(#glow-18-5)">
+      <title>2026-03-20 — 6 commits | Evening</title>
     </rect>
     <rect x="293" y="96" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -643,7 +647,7 @@
     </rect>
     <rect x="306" y="57" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.88" filter="url(#glow-19-3)">
-      <title>2026-03-25 — 8 commits | Logic Prime</title>
+      <title>2026-03-25 — 8 commits | Morning</title>
     </rect>
     <rect x="306" y="70" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -915,7 +919,7 @@
     </rect>
     <rect x="436" y="31" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-06-01 — 1 commit | Peak Velocity</title>
+      <title>2026-06-01 — 1 commit | Afternoon</title>
     </rect>
     <rect x="436" y="44" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1022,16 +1026,16 @@
       <title>2026-06-27 — 0 commits | No commits</title>
     </rect>
     <rect x="488" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#3fb950" fill-opacity="0.7">
-      <title>2026-06-28 — 4 commits | Flow State</title>
+          fill="#3fb950" fill-opacity="0.88" filter="url(#glow-33-0)">
+      <title>2026-06-28 — 8 commits | Evening</title>
     </rect>
     <rect x="488" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2026-06-29 — 0 commits | No commits</title>
     </rect>
     <rect x="488" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-06-30 — 1 commit | Shadow Mode</title>
+          fill="#6e40c9" fill-opacity="0.7">
+      <title>2026-06-30 — 3 commits | Late Night</title>
     </rect>
     <rect x="488" y="57" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1042,8 +1046,8 @@
       <title>2026-07-02 — 0 commits | No commits</title>
     </rect>
     <rect x="488" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#f2cc60" fill-opacity="1" filter="url(#glow-33-5)">
-      <title>2026-07-03 — 18 commits | Logic Prime</title>
+          fill="#f2cc60" fill-opacity="0.88" filter="url(#glow-33-5)">
+      <title>2026-07-03 — 9 commits | Morning</title>
     </rect>
     <rect x="488" y="96" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1067,7 +1071,7 @@
     </rect>
     <rect x="501" y="70" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="0.7">
-      <title>2026-07-09 — 5 commits | Flow State</title>
+      <title>2026-07-09 — 5 commits | Evening</title>
     </rect>
     <rect x="501" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1087,15 +1091,15 @@
     </rect>
     <rect x="514" y="44" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-07-14 — 2 commits | Shadow Mode</title>
+      <title>2026-07-14 — 2 commits | Late Night</title>
     </rect>
     <rect x="514" y="57" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.7">
-      <title>2026-07-15 — 3 commits | Logic Prime</title>
+      <title>2026-07-15 — 3 commits | Morning</title>
     </rect>
     <rect x="514" y="70" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="1" filter="url(#glow-35-4)">
-      <title>2026-07-16 — 19 commits | Peak Velocity</title>
+      <title>2026-07-16 — 19 commits | Afternoon</title>
     </rect>
     <rect x="514" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1107,7 +1111,7 @@
     </rect>
     <rect x="527" y="18" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-07-19 — 1 commit | Peak Velocity</title>
+      <title>2026-07-19 — 1 commit | Afternoon</title>
     </rect>
     <rect x="527" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1135,7 +1139,7 @@
     </rect>
     <rect x="540" y="18" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.7">
-      <title>2026-07-26 — 3 commits | Logic Prime</title>
+      <title>2026-07-26 — 3 commits | Morning</title>
     </rect>
     <rect x="540" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1143,11 +1147,11 @@
     </rect>
     <rect x="540" y="44" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-07-28 — 3 commits | Shadow Mode</title>
+      <title>2026-07-28 — 3 commits | Late Night</title>
     </rect>
     <rect x="540" y="57" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-07-29 — 1 commit | Peak Velocity</title>
+      <title>2026-07-29 — 1 commit | Afternoon</title>
     </rect>
     <rect x="540" y="70" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1203,11 +1207,11 @@
     </rect>
     <rect x="566" y="57" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.7">
-      <title>2026-08-12 — 4 commits | Logic Prime</title>
+      <title>2026-08-12 — 4 commits | Morning</title>
     </rect>
     <rect x="566" y="70" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.88" filter="url(#glow-39-4)">
-      <title>2026-08-13 — 9 commits | Peak Velocity</title>
+      <title>2026-08-13 — 9 commits | Afternoon</title>
     </rect>
     <rect x="566" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1215,7 +1219,7 @@
     </rect>
     <rect x="566" y="96" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.88" filter="url(#glow-39-6)">
-      <title>2026-08-15 — 6 commits | Peak Velocity</title>
+      <title>2026-08-15 — 6 commits | Afternoon</title>
     </rect>
     <rect x="579" y="18" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1239,7 +1243,7 @@
     </rect>
     <rect x="579" y="83" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-08-21 — 3 commits | Shadow Mode</title>
+      <title>2026-08-21 — 3 commits | Late Night</title>
     </rect>
     <rect x="579" y="96" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1255,7 +1259,7 @@
     </rect>
     <rect x="592" y="44" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="1" filter="url(#glow-41-2)">
-      <title>2026-08-25 — 16 commits | Logic Prime</title>
+      <title>2026-08-25 — 16 commits | Morning</title>
     </rect>
     <rect x="592" y="57" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1263,7 +1267,7 @@
     </rect>
     <rect x="592" y="70" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="1" filter="url(#glow-41-4)">
-      <title>2026-08-27 — 27 commits | Logic Prime</title>
+      <title>2026-08-27 — 27 commits | Morning</title>
     </rect>
     <rect x="592" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1283,7 +1287,7 @@
     </rect>
     <rect x="605" y="44" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-09-01 — 1 commit | Peak Velocity</title>
+      <title>2026-09-01 — 1 commit | Afternoon</title>
     </rect>
     <rect x="605" y="57" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1307,7 +1311,7 @@
     </rect>
     <rect x="618" y="31" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-07 — 2 commits | Shadow Mode</title>
+      <title>2026-09-07 — 2 commits | Late Night</title>
     </rect>
     <rect x="618" y="44" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1319,7 +1323,7 @@
     </rect>
     <rect x="618" y="70" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-09-10 — 4 commits | Shadow Mode</title>
+      <title>2026-09-10 — 4 commits | Late Night</title>
     </rect>
     <rect x="618" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1331,7 +1335,7 @@
     </rect>
     <rect x="631" y="18" width="11" height="11" rx="2" ry="2"
           fill="#f2cc60" fill-opacity="0.7">
-      <title>2026-09-13 — 5 commits | Logic Prime</title>
+      <title>2026-09-13 — 5 commits | Morning</title>
     </rect>
     <rect x="631" y="31" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1347,7 +1351,7 @@
     </rect>
     <rect x="631" y="70" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="0.45">
-      <title>2026-09-17 — 1 commit | Flow State</title>
+      <title>2026-09-17 — 1 commit | Evening</title>
     </rect>
     <rect x="631" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
@@ -1355,233 +1359,233 @@
     </rect>
     <rect x="631" y="96" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-09-19 — 2 commits | Peak Velocity</title>
+      <title>2026-09-19 — 2 commits | Afternoon</title>
     </rect>
     <rect x="644" y="18" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2026-09-20 — 0 commits | No commits</title>
     </rect>
     <rect x="644" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#ff7b72" fill-opacity="0.45">
-      <title>2026-09-21 — 1 commit | Peak Velocity</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-21 — 0 commits | No commits</title>
     </rect>
     <rect x="644" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#3fb950" fill-opacity="0.7">
-      <title>2026-09-22 — 4 commits | Flow State</title>
+          fill="#3fb950" fill-opacity="0.45">
+      <title>2026-09-22 — 2 commits | Evening</title>
     </rect>
     <rect x="644" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-23 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-23 — 0 commits | No commits</title>
     </rect>
     <rect x="644" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-09-24 — 3 commits | Shadow Mode</title>
+          fill="#3fb950" fill-opacity="0.45">
+      <title>2026-09-24 — 1 commit | Evening</title>
     </rect>
     <rect x="644" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-09-25 — 3 commits | Shadow Mode</title>
+          fill="#3fb950" fill-opacity="0.45">
+      <title>2026-09-25 — 1 commit | Evening</title>
     </rect>
     <rect x="644" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-26 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-26 — 0 commits | No commits</title>
     </rect>
     <rect x="657" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-27 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-27 — 0 commits | No commits</title>
     </rect>
     <rect x="657" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-09-28 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-09-28 — 0 commits | No commits</title>
     </rect>
     <rect x="657" y="44" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="1" filter="url(#glow-46-2)">
-      <title>2026-09-29 — 13 commits | Flow State</title>
+      <title>2026-09-29 — 11 commits | Evening</title>
     </rect>
     <rect x="657" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#f2cc60" fill-opacity="0.88" filter="url(#glow-46-3)">
-      <title>2026-09-30 — 6 commits | Logic Prime</title>
+          fill="#f2cc60" fill-opacity="0.7">
+      <title>2026-09-30 — 4 commits | Morning</title>
     </rect>
     <rect x="657" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-01 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-01 — 0 commits | No commits</title>
     </rect>
     <rect x="657" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-02 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-02 — 0 commits | No commits</title>
     </rect>
     <rect x="657" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-03 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-03 — 0 commits | No commits</title>
     </rect>
     <rect x="670" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-04 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-04 — 0 commits | No commits</title>
     </rect>
     <rect x="670" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-05 — 1 commit | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-05 — 0 commits | No commits</title>
     </rect>
     <rect x="670" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-06 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-06 — 0 commits | No commits</title>
     </rect>
     <rect x="670" y="57" width="11" height="11" rx="2" ry="2"
           fill="#ff7b72" fill-opacity="1" filter="url(#glow-47-3)">
-      <title>2026-10-07 — 15 commits | Peak Velocity</title>
+      <title>2026-10-07 — 13 commits | Afternoon</title>
     </rect>
     <rect x="670" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#3fb950" fill-opacity="1" filter="url(#glow-47-4)">
-      <title>2026-10-08 — 11 commits | Flow State</title>
+          fill="#3fb950" fill-opacity="0.88" filter="url(#glow-47-4)">
+      <title>2026-10-08 — 9 commits | Evening</title>
     </rect>
     <rect x="670" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-09 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-09 — 0 commits | No commits</title>
     </rect>
     <rect x="670" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-10 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-10 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-11 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-11 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-12 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-12 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-13 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-13 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-14 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-14 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-15 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-15 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-16 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-16 — 0 commits | No commits</title>
     </rect>
     <rect x="683" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-17 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-17 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-18 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-18 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-19 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-19 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-20 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-20 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-21 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-21 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-22 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-22 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-23 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-23 — 0 commits | No commits</title>
     </rect>
     <rect x="696" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-24 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-24 — 0 commits | No commits</title>
     </rect>
     <rect x="709" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-25 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-25 — 0 commits | No commits</title>
     </rect>
     <rect x="709" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-26 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-26 — 0 commits | No commits</title>
     </rect>
     <rect x="709" y="44" width="11" height="11" rx="2" ry="2"
           fill="#3fb950" fill-opacity="0.88" filter="url(#glow-50-2)">
-      <title>2026-10-27 — 8 commits | Flow State</title>
+      <title>2026-10-27 — 6 commits | Evening</title>
     </rect>
     <rect x="709" y="57" width="11" height="11" rx="2" ry="2"
           fill="#6e40c9" fill-opacity="0.7">
-      <title>2026-10-28 — 5 commits | Shadow Mode</title>
+      <title>2026-10-28 — 3 commits | Late Night</title>
     </rect>
     <rect x="709" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-29 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-29 — 0 commits | No commits</title>
     </rect>
     <rect x="709" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-30 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-30 — 0 commits | No commits</title>
     </rect>
     <rect x="709" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-10-31 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-10-31 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-01 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-01 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-02 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-02 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-03 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-03 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-04 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-04 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="70" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-05 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-05 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-06 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-06 — 0 commits | No commits</title>
     </rect>
     <rect x="722" y="96" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-07 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-07 — 0 commits | No commits</title>
     </rect>
     <rect x="735" y="18" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-08 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-08 — 0 commits | No commits</title>
     </rect>
     <rect x="735" y="31" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-09 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-09 — 0 commits | No commits</title>
     </rect>
     <rect x="735" y="44" width="11" height="11" rx="2" ry="2"
-          fill="#6e40c9" fill-opacity="0.45">
-      <title>2026-11-10 — 2 commits | Shadow Mode</title>
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-10 — 0 commits | No commits</title>
     </rect>
     <rect x="735" y="57" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2026-11-11 — 0 commits | No commits</title>
+          fill="#6e40c9" fill-opacity="0.45">
+      <title>2026-11-11 — 2 commits | Late Night</title>
     </rect>
 
   <!-- Legend -->
   
     <rect x="117" y="121" width="11" height="11" rx="2" fill="#6e40c9"/>
-    <text x="134" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Shadow Mode</text>
+    <text x="134" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Late Night</text>
     <text x="134" y="139" fill="#555e6b" font-size="7"  font-family="monospace">00h – 05h</text>
     <rect x="252" y="121" width="11" height="11" rx="2" fill="#f2cc60"/>
-    <text x="269" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Logic Prime</text>
+    <text x="269" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Morning</text>
     <text x="269" y="139" fill="#555e6b" font-size="7"  font-family="monospace">06h – 11h</text>
     <rect x="387" y="121" width="11" height="11" rx="2" fill="#ff7b72"/>
-    <text x="404" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Peak Velocity</text>
+    <text x="404" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Afternoon</text>
     <text x="404" y="139" fill="#555e6b" font-size="7"  font-family="monospace">12h – 17h</text>
     <rect x="522" y="121" width="11" height="11" rx="2" fill="#3fb950"/>
-    <text x="539" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Flow State</text>
+    <text x="539" y="129"  fill="#8b949e" font-size="9" font-family="monospace">Evening</text>
     <text x="539" y="139" fill="#555e6b" font-size="7"  font-family="monospace">18h – 23h</text>
 </svg>
