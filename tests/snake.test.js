@@ -75,3 +75,27 @@ test('SVG uses synchronized looping declarative animation without embedded scrip
     times.slice(1).forEach((time, i) => assert.ok(time > times[i]));
   }
 });
+
+test('empty moves never grow the snake and each meal adds exactly one colored square', () => {
+  const sparse = food.filter((_, i) => i % 4 === 0);
+  for (let seed = 0; seed < 20; seed++) {
+    const round = simulateRound({ cols: 6, rows: 6, food: sparse, rng: random(seed), risk: 0 });
+    assert.equal(round.frames[0].body.length, 1);
+    assert.equal(round.frames[0].eaten, 0);
+    const expectedColors = ['#e6edf3'];
+    for (const [i, frame] of round.frames.entries()) {
+      if (frame.consumed) expectedColors.push(sparse.find(p => key(p) === frame.consumed).color);
+      assert.equal(frame.body.length, 1 + frame.eaten);
+      assert.deepEqual(frame.colors, expectedColors);
+      if (i) assert.equal(frame.body.length - round.frames[i - 1].body.length, frame.consumed ? 1 : 0);
+    }
+  }
+});
+
+test('each movement lasts 250ms and the SVG duration includes the result and reset pauses', () => {
+  const { STEP_SECONDS } = require('../scripts/snake');
+  assert.equal(STEP_SECONDS, 0.25);
+  const animation = createSnakeAnimation({ cols: 6, rows: 6, food, seed: 'speed',
+    left: 0, top: 0, step: 13, cell: 11, statusY: 120, width: 80, rounds: 1 });
+  assert.equal(animation.duration, 2 + animation.rounds[0].frames.length * STEP_SECONDS + 4.5);
+});

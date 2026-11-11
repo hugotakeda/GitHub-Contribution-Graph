@@ -89,7 +89,14 @@ The calendar now includes three automatically looping snake rounds:
 
 - Every active day is food, regardless of Late Night, Morning, Afternoon, or Evening.
   Empty days are traversable space. A square counts once, even if it represents many commits.
-- The snake grows after eating. Its head takes the most recently eaten square's color.
+- The snake starts as one square and adds exactly one segment for every square eaten.
+  Empty moves never increase its length. Body segments use the calendar's square size
+  and retain the colors of eaten squares. The head takes the latest food color.
+- Each move takes 250ms (four squares per second). Previews should use the same timing,
+  without acceleration.
+- The snake prefers to spawn on an empty square. If no empty spawn is available
+  (such as a completely filled board), the starting food square itself forms the head;
+  every subsequent meal still adds exactly one segment.
 - Randomized continuous routes can clear all food. In risk-taking rounds, a random wrong
   turn can cause an actual collision with occupied body, ending the round.
 - A win or loss remains visible briefly, then the original contribution squares return.

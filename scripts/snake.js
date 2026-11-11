@@ -1,6 +1,7 @@
 'use strict';
 
 const key = point => point.x + ',' + point.y;
+const STEP_SECONDS = 0.25;
 const adjacent = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y) === 1;
 
 function random(seed) {
@@ -35,11 +36,18 @@ function makeRoute(cols, rows, rng) {
 }
 
 function simulateRound({ cols, rows, food, rng, risk = 0.012 }) {
-  const route = makeRoute(cols, rows, rng);
+  let route = makeRoute(cols, rows, rng);
+  const foodKeys = new Set(food.map(key));
+  // Prefer an empty spawn so every eaten square adds one visible body segment.
+  for (let attempt = 0; foodKeys.has(key(route[0])) && food.length < cols * rows && attempt < 32; attempt++) {
+    if (!foodKeys.has(key(route.at(-1)))) { route.reverse(); break; }
+    route = makeRoute(cols, rows, rng);
+  }
   const remaining = new Map(food.map(item => [key(item), item]));
   const frames = [];
   let body = [];
-  let capacity = 3;
+  let capacity = 1;
+  const colors = ['#e6edf3'];
   let eaten = 0;
   let color = '#e6edf3';
   for (const point of route) {
@@ -50,14 +58,21 @@ function simulateRound({ cols, rows, food, rng, risk = 0.012 }) {
       if (choices.length) {
         const hit = choices[Math.floor(rng() * choices.length)];
         frames.push({ head: hit, body: [...body], eaten, consumed: null,
-          status: 'lost', color: '#ff7b72' });
+          status: 'lost', color: '#ff7b72', colors: [...colors] });
         return { frames, outcome: 'lost', total: food.length };
       }
     }
     const meal = remaining.get(key(point));
     if (meal) {
       remaining.delete(key(point));
-      capacity++;
+      // On a completely full board the spawn square itself becomes the head.
+      // Every subsequent meal adds exactly one segment; empty moves add none.
+      if (body.length) {
+        capacity++;
+        colors.push(meal.color);
+      } else {
+        colors[0] = meal.color;
+      }
       eaten++;
       color = meal.color;
     }
@@ -65,7 +80,7 @@ function simulateRound({ cols, rows, food, rng, risk = 0.012 }) {
     if (body.length > capacity) body.pop();
     const status = remaining.size ? 'running' : 'won';
     frames.push({ head: point, body: [...body], eaten, consumed: meal ? key(point) : null,
-      status, color: status === 'won' ? '#3fb950' : color });
+      status, color: status === 'won' ? '#3fb950' : color, colors: [...colors] });
     if (status === 'won') return { frames, outcome: 'won', total: food.length };
   }
   throw new Error('Route ended before all food was visited');
@@ -92,19 +107,18 @@ function createSnakeAnimation({ cols, rows, food, seed, left, top, step, cell, s
     simulateRound({ cols, rows, food, rng, risk: rng() < 0.45 ? 0 : 0.018 }));
   const foodEvents = new Map(food.map(point => [key(point), [[0, 1]]]));
   const bodyEvents = new Map();
-  const edgeEvents = new Map();
+  const bodyColorEvents = new Map();
   const position = [[0, '0 0']];
   const visibility = [[0, 0]];
   const headColor = [[0, '#e6edf3']];
   const messages = [];
   let time = 2;
-  const tick = 0.085;
+  const tick = STEP_SECONDS;
   for (const [roundIndex, round] of simulations.entries()) {
     const start = time;
     const playing = [[0, 0], [start, 1]];
     visibility.push([start, 1]);
     let occupied = new Set();
-    let connected = new Set();
     for (const frame of round.frames) {
       const next = new Set(frame.body.map(key));
       for (const id of new Set([...occupied, ...next])) {
@@ -113,14 +127,11 @@ function createSnakeAnimation({ cols, rows, food, seed, left, top, step, cell, s
         bodyEvents.get(id).push([time, next.has(id) ? 1 : 0]);
       }
       occupied = next;
-      const edges = new Set(frame.body.slice(1).map((part, i) =>
-        [key(frame.body[i]), key(part)].sort().join('|')));
-      for (const id of new Set([...connected, ...edges])) {
-        if (connected.has(id) === edges.has(id)) continue;
-        if (!edgeEvents.has(id)) edgeEvents.set(id, [[0, 0]]);
-        edgeEvents.get(id).push([time, edges.has(id) ? 1 : 0]);
-      }
-      connected = edges;
+      frame.body.forEach((part, index) => {
+        const id = key(part);
+        if (!bodyColorEvents.has(id)) bodyColorEvents.set(id, [[0, '#e6edf3']]);
+        bodyColorEvents.get(id).push([time, frame.colors[index]]);
+      });
       position.push([time, `${left + frame.head.x * step} ${top + frame.head.y * step}`]);
       headColor.push([time, frame.color]);
       if (frame.consumed) foodEvents.get(frame.consumed).push([time, 0]);
@@ -139,24 +150,18 @@ function createSnakeAnimation({ cols, rows, food, seed, left, top, step, cell, s
     result.push([time, 0]);
     visibility.push([time, 0]);
     for (const id of occupied) bodyEvents.get(id).push([time, 0]);
-    for (const id of connected) edgeEvents.get(id).push([time, 0]);
     for (const events of foodEvents.values()) events.push([time, 1]);
     time += 2;
   }
   const duration = time;
-  const links = [...edgeEvents].map(([id, events]) => {
-    const [a, b] = id.split('|').map(point => point.split(',').map(Number));
-    return `<line x1="${left + a[0] * step + cell / 2}" y1="${top + a[1] * step + cell / 2}" x2="${left + b[0] * step + cell / 2}" y2="${top + b[1] * step + cell / 2}" stroke="#c9d1d9" stroke-width="6" stroke-linecap="round" opacity="0">${animate('opacity', events, duration)}</line>`;
-  }).join('');
   const bodies = [...bodyEvents].map(([id, events]) => {
     const [x, y] = id.split(',').map(Number);
-    return `<rect x="${left + x * step + (cell - 6) / 2}" y="${top + y * step + (cell - 6) / 2}" width="6" height="6" rx="3" fill="#c9d1d9" opacity="0">${animate('opacity', events, duration)}</rect>`;
+    return `<rect x="${left + x * step}" y="${top + y * step}" width="${cell}" height="${cell}" rx="2" fill="#e6edf3" opacity="0">${animate('opacity', events, duration)}${animate('fill', bodyColorEvents.get(id), duration)}</rect>`;
   }).join('');
   const labels = messages.map(message =>
     `<text x="${width / 2}" y="${statusY}" text-anchor="middle" font-family="monospace" font-size="10" fill="${message.color}" opacity="0">${message.text}${animate('opacity', message.events, duration)}</text>`).join('');
   const overlay = `
   <g class="snake-layer" aria-hidden="true">
-    ${links}
     ${bodies}
     <g opacity="0">${animate('opacity', visibility, duration)}
       <g>${animate('transform', position, duration, true)}
@@ -175,4 +180,4 @@ function createSnakeAnimation({ cols, rows, food, seed, left, top, step, cell, s
   };
 }
 
-module.exports = { key, adjacent, random, makeRoute, simulateRound, createSnakeAnimation };
+module.exports = { STEP_SECONDS, key, adjacent, random, makeRoute, simulateRound, createSnakeAnimation };
