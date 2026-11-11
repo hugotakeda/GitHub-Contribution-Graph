@@ -3,6 +3,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { createSnakeAnimation } = require('./snake');
 
 // ── Config ────────────────────────────────────────────────────────────────────
 const USERNAME = process.env.GITHUB_USERNAME || process.argv[2];
@@ -180,7 +181,7 @@ const MONTHS   = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','N
 const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 // ── Build SVG ──────────────────────────────────────────────────────────────────
-function buildSvg(days) {
+function buildSvg(days, options = {}) {
   const firstDate   = new Date(days[0].date);
   const firstDow    = firstDate.getUTCDay();
   const paddedDays  = [...Array(firstDow).fill(null), ...days];
@@ -193,7 +194,19 @@ function buildSvg(days) {
   const graphWidth = weeks.length * STEP;
   const LEFT_PAD   = SIDE_PAD + DAY_PAD;
   const WIDTH      = graphWidth + LEFT_PAD + SIDE_PAD;  // aligns to exactly 775px
-  const HEIGHT     = TOP_PAD + ROWS * STEP + BOT_PAD;
+  const HEIGHT     = TOP_PAD + ROWS * STEP + BOT_PAD + 28;
+
+  const food = [];
+  weeks.forEach((week, x) => week.forEach((day, y) => {
+    if (day && day.total > 0) food.push({ x, y, color: STATES[day.state].color });
+  }));
+  const snake = options.animate === false ? { foodAnimation: () => '', overlay: '' }
+    : createSnakeAnimation({
+      cols: weeks.length, rows: ROWS, food,
+      seed: options.seed || days.map(day => `${day.date}:${day.total}:${day.state}`).join('|'),
+      left: LEFT_PAD, top: TOP_PAD, step: STEP, cell: CELL,
+      statusY: HEIGHT - 9, width: WIDTH,
+    });
 
   // – weekday labels –
   const dayLabels_svg = WEEKDAYS.map((day, di) => {
@@ -243,10 +256,13 @@ function buildSvg(days) {
       const tooltip    = `${day.date} — ${day.total} commit${day.total !== 1 ? 's' : ''} | ${stateLabel}`;
 
       cells.push(`
+    <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="${STATES.none.color}"/>
+    <g class="contribution-food" opacity="1">
+      ${day.total > 0 ? snake.foodAnimation(wi + ',' + di) : ''}
     <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" ry="2"
           fill="${fillColor}" fill-opacity="${op}"${filterAttr}>
       <title>${tooltip}</title>
-    </rect>`);
+    </rect></g>`);
     });
   });
 
@@ -275,6 +291,10 @@ function buildSvg(days) {
   <style>
     @keyframes pulse { 0%,100%{opacity:.85} 50%{opacity:1} }
     .glow-cell { animation: pulse 2.5s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .snake-layer { display: none; }
+      .contribution-food { opacity: 1 !important; }
+    }
   </style>`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg"
@@ -282,6 +302,7 @@ function buildSvg(days) {
      viewBox="0 0 ${WIDTH} ${HEIGHT}"
      role="img"
      aria-label="Energy Rhythm Contribution Graph for ${USERNAME}">
+  <desc>Commits by time of day. A simulated snake eats active squares of every color, grows, and can clear the board or collide with its body. Rounds repeat; routes change when contribution data changes. Reduced motion shows the static calendar.</desc>
   <defs>
     ${animDefs.join('')}
   </defs>
@@ -298,6 +319,9 @@ function buildSvg(days) {
 
   <!-- Cells -->
   ${cells.join('')}
+
+  <!-- Precomputed snake rounds; no JavaScript runs in the image. -->
+  ${snake.overlay}
 
   <!-- Legend -->
   ${legendItems_svg}

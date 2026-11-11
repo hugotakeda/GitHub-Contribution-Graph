@@ -82,3 +82,29 @@ The system uses **Node.js** and the **GitHub GraphQL API** to fetch your commit 
 - Future SVG updates use `github-actions[bot]` as both author and committer. Historical GitHub contribution credit is unchanged; the exclusion only affects this SVG.
 
 Run regression checks with `node --test tests/generateSvg.test.js`.
+
+## Snake animation
+
+The calendar now includes three automatically looping snake rounds:
+
+- Every active day is food, regardless of Late Night, Morning, Afternoon, or Evening.
+  Empty days are traversable space. A square counts once, even if it represents many commits.
+- The snake grows after eating. Its head takes the most recently eaten square's color.
+- Randomized continuous routes can clear all food. In risk-taking rounds, a random wrong
+  turn can cause an actual collision with occupied body, ending the round.
+- A win or loss remains visible briefly, then the original contribution squares return.
+- Routes and risk choices are simulated during SVG generation, with a seed derived from
+  the calendar data. The SVG repeats those precomputed rounds; it does not generate fresh
+  randomness on every page view. A new calendar produces new routes.
+- Animation uses SVG SMIL, with no scripts, external assets, or browser game controls.
+  Reduced-motion preferences show the original static calendar.
+- The animation does not change commit counts, dates, time-of-day colors, or Git history.
+  It uses the existing SVG URL, so the profile README needs no additional image.
+
+The route generator uses randomized backbite moves on a covering path. This lets cautious
+rounds reach every square while still allowing risky turns to lose by self-collision.
+The simulation only allows adjacent grid moves and never treats the vacating tail as an
+occupied collision target. On an empty calendar the graph stays static.
+
+Run all regression tests with `node --test tests/*.test.js`.
+For a static SVG when calling the renderer directly, use `buildSvg(days, { animate: false })`.
