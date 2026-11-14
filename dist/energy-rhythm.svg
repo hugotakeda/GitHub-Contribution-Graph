@@ -117,10 +117,6 @@
 
   <!-- Cells -->
   
-    <rect x="59" y="83" width="11" height="11" rx="2" ry="2"
-          fill="#161b22" fill-opacity="1">
-      <title>2025-11-14 — 0 commits | No commits</title>
-    </rect>
     <rect x="59" y="96" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2025-11-15 — 0 commits | No commits</title>
@@ -1576,6 +1572,10 @@
     <rect x="735" y="83" width="11" height="11" rx="2" ry="2"
           fill="#161b22" fill-opacity="1">
       <title>2026-11-13 — 0 commits | No commits</title>
+    </rect>
+    <rect x="735" y="96" width="11" height="11" rx="2" ry="2"
+          fill="#161b22" fill-opacity="1">
+      <title>2026-11-14 — 0 commits | No commits</title>
     </rect>
 
   <!-- Legend -->
